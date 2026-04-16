@@ -1,0 +1,112 @@
+/* ─────────────────────────────────────────────
+   PRODUCT DETAIL - DARK PREMIUM STREETWEAR layout
+───────────────────────────────────────────── */
+
+.product-detail-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* ── Breadcrumbs ── */
+.pd-breadcrumbs-section { padding: 2rem 0; }
+.breadcrumbs {
+  display: flex; gap: 0.8rem; font-size: 0.7rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-tertiary);
+}
+.breadcrumbs a { color: var(--text-tertiary); text-decoration: none; transition: color 0.3s; }
+.breadcrumbs a:hover { color: #fff; }
+.breadcrumbs .current { color: #fff; }
+
+/* ── Grid ── */
+.pd-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6rem;
+}
+
+/* ── Gallery ── */
+.pd-gallery { display: flex; flex-direction: column; gap: 1.5rem; }
+.pd-main-img-wrap {
+  aspect-ratio: 4/5; width: 100%; border-radius: var(--radius-md); overflow: hidden;
+  background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,0.05);
+}
+.pd-main-img { width: 100%; height: 100%; object-fit: cover; }
+
+.pd-thumbnails { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.pd-thumb-btn {
+  aspect-ratio: 4/5; padding: 0; border: 1px solid rgba(255,255,255,0.05);
+  background: var(--bg-tertiary); border-radius: var(--radius-sm); overflow: hidden;
+  cursor: pointer; opacity: 0.4; transition: all 0.3s;
+}
+.pd-thumb-btn img { width: 100%; height: 100%; object-fit: cover; }
+.pd-thumb-btn.active { opacity: 1; border-color: rgba(255,255,255,0.2); }
+.pd-thumb-btn:hover { opacity: 0.8; }
+
+/* ── Info Side ── */
+.pd-category-label {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.5rem;
+}
+.pd-title {
+  font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400; color: #fff; margin-bottom: 1rem; line-height: 1.1;
+}
+.pd-price { font-size: 1.5rem; font-weight: 300; color: #fff; }
+
+.pd-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 3rem 0; }
+
+.pd-description p { font-size: 1rem; line-height: 1.8; color: var(--text-secondary); font-weight: 300; }
+
+/* ── Sizes ── */
+.pd-option-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; }
+.pd-size-guide-link { font-size: 0.75rem; color: var(--text-tertiary); text-decoration: underline; text-underline-offset: 4px; }
+.pd-sizes { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.pd-size-btn {
+  width: 50px; height: 50px; border: 1px solid rgba(255,255,255,0.1);
+  background: none; color: #fff; font-family: var(--font-sans); font-size: 0.85rem;
+  border-radius: var(--radius-sm); cursor: pointer; transition: all 0.3s;
+}
+.pd-size-btn:hover { border-color: #fff; }
+.pd-size-btn.active { background: #fff; color: #000; border-color: #fff; }
+.pd-model-note { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 1.5rem; font-style: italic; }
+
+/* ── Actions ── */
+.pd-actions { display: flex; gap: 1rem; margin-top: 4rem; }
+.add-to-cart-btn {
+  flex: 1; background: #fff; color: #000; border: none; padding: 1.5rem;
+  border-radius: 100px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  cursor: pointer; transition: all 0.3s;
+}
+.add-to-cart-btn:hover { transform: scale(0.98); opacity: 0.9; }
+.wishlist-btn-large {
+  width: 70px; border: 1px solid rgba(255,255,255,0.1); border-radius: 100px;
+  background: var(--bg-tertiary); color: #fff; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: all 0.3s;
+}
+.wishlist-btn-large:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+.wishlist-btn-large.active { 
+  background: #ff4757; 
+  border-color: #ff4757;
+  transform: scale(1.05);
+}
+
+/* ── Details ── */
+.pd-details-box { background: var(--bg-secondary); padding: 3rem; border-radius: var(--radius-md); }
+.pd-details-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; margin-bottom: 2rem; }
+.pd-details-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.pd-details-list li { font-size: 0.95rem; color: var(--text-secondary); font-weight: 300; display: flex; align-items: center; gap: 1rem; }
+.pd-details-list li::before { content: '✦'; font-size: 0.6rem; color: var(--text-tertiary); }
+
+/* ── Shipping ── */
+.pd-shipping-note {
+  display: flex; align-items: center; gap: 2rem; padding: 2.5rem;
+  background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px dashed rgba(255,255,255,0.1);
+}
+.truck-icon { color: var(--text-secondary); }
+.pd-shipping-note span { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.6; }
+
+/* ── Related ── */
+.pd-related { background: var(--bg-secondary); margin-top: 120px; }
+
+@media (max-width: 1024px) {
+  .pd-grid { grid-template-columns: 1fr; gap: 4rem; }
+}

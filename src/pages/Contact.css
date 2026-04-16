@@ -1,0 +1,181 @@
+/* ── Contact Page ─────────────────────────────────── */
+
+.contact-page {
+  background: #FAF6EE;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Hero ── */
+.contact-hero { background: #F2EBD9; }
+.contact-hero h1 { color: #1A120B; }
+.contact-hero-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #7A6B55;
+  max-width: 460px;
+  margin: 1rem auto 0;
+  font-weight: 300;
+  text-align: center;
+}
+
+/* ── Contact Grid ── */
+.contact-content { background: #FAF6EE; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ── Store Info ── */
+.contact-info h2 { margin-bottom: 2.5rem; }
+
+.store-location {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(26,18,11,0.08);
+  position: relative;
+}
+.store-location:last-of-type { border-bottom: none; }
+
+.store-badge {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: #C4922A;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.6rem;
+}
+.store-location h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1A120B;
+  margin-bottom: 0.5rem;
+}
+.store-location p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #6B5B45;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.contact-detail {
+  font-size: 0.83rem;
+  line-height: 1.75;
+  color: #C4922A !important;
+  font-weight: 400 !important;
+}
+.store-hours {
+  font-size: 0.75rem !important;
+  color: #BBA98A !important;
+  letter-spacing: 0.05em;
+  margin-top: 0.3rem !important;
+}
+
+.corporate-inquiries {
+  padding-top: 2rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(26,18,11,0.08);
+}
+.corporate-inquiries p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #6B5B45;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Right Column ── */
+.contact-right-column { display: flex; flex-direction: column; gap: 2.5rem; }
+
+/* ── Contact Form ── */
+.contact-form-container {
+  background: #fff;
+  padding: 2.5rem;
+  border: 1px solid rgba(26,18,11,0.07);
+  border-radius: 2px;
+}
+.contact-form-container h2 { margin-bottom: 0.4rem; font-size: 1.8rem; }
+.form-desc {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #9A8570;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9A8570;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(26,18,11,0.12);
+  border-radius: 2px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: #1A120B;
+  background: #FAF6EE;
+  outline: none;
+  transition: border-color 0.25s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: #C4922A; }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: #BBA98A; }
+.form-group textarea { resize: vertical; min-height: 130px; }
+
+/* ── Virtual CTA Box ── */
+.virtual-cta-box {
+  background: #1A120B;
+  padding: 2.5rem;
+  border-radius: 2px;
+}
+.vcta-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.virtual-cta-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #EDE0C8;
+  margin-bottom: 0.75rem;
+}
+.virtual-cta-desc {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: rgba(237,224,200,0.45);
+  font-weight: 300;
+  margin-bottom: 1.8rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 992px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .contact-form-container { padding: 1.8rem; }
+  .virtual-cta-box { padding: 1.8rem; }
+}

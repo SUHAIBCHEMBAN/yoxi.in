@@ -1,0 +1,43 @@
+/* ─────────────────────────────────────────────
+   WISHLIST PAGE - DARK PREMIUM STREETWEAR layout
+───────────────────────────────────────────── */
+
+.wishlist-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.wishlist-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #fff;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 2rem;
+}
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem 2rem;
+}
+
+.wishlist-empty {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.wishlist-empty h2 { font-family: var(--font-serif); font-size: 3rem; margin-bottom: 2rem; }
+
+@media (max-width: 1200px) {
+  .wishlist-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .wishlist-grid { grid-template-columns: 1fr; }
+}

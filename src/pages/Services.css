@@ -1,0 +1,89 @@
+/* ─────────────────────────────────────────────
+   SERVICES PAGE - DARK PREMIUM STREETWEAR layout
+───────────────────────────────────────────── */
+
+.services-page {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* ── Hero ── */
+.services-hero { border-bottom: 1px solid rgba(255,255,255,0.05); }
+.display-title { color: #fff; margin: 1rem 0 2rem; }
+.services-hero-desc {
+  max-width: 600px; margin: 0 auto;
+  font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300;
+}
+
+/* ── Services List ── */
+.service-row {
+  display: flex; align-items: center; gap: 8vw;
+  margin-bottom: 120px;
+}
+.service-row.reverse { flex-direction: row-reverse; }
+
+.service-img-container {
+  flex: 1.2; position: relative;
+  aspect-ratio: 16/10; overflow: hidden; border-radius: var(--radius-md);
+}
+.service-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.8) contrast(1.1);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-row:hover .service-img { transform: scale(1.05); }
+
+.service-img-num {
+  position: absolute; top: 2rem; left: 2rem;
+  font-family: var(--font-serif); font-size: 4rem; color: #fff; opacity: 0.2;
+}
+
+.service-content { flex: 1; }
+.service-number {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3em;
+  color: var(--text-tertiary); display: block; margin-bottom: 1.5rem;
+}
+.service-desc {
+  font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary);
+  font-weight: 300; margin-bottom: 3rem;
+}
+
+/* ── Process ── */
+.process-section { background: var(--bg-secondary); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.process-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem;
+}
+.process-step { display: flex; flex-direction: column; gap: 1.5rem; }
+.process-num {
+  font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.2em;
+  color: var(--text-tertiary); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;
+}
+.process-title { font-size: 1rem; font-weight: 500; color: #fff; }
+.process-desc { font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); font-weight: 300; }
+
+/* ── FAQ ── */
+.faq-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 6rem; }
+.faq-sub { color: var(--text-secondary); margin: 2rem 0 3rem; line-height: 1.8; font-weight: 300; }
+
+.faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.faq-question {
+  width: 100%; padding: 2.5rem 0; background: none; border: none;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #fff; font-size: 1.15rem; font-weight: 400; cursor: pointer; text-align: left;
+}
+.faq-icon { font-size: 1.5rem; font-weight: 200; color: var(--text-tertiary); }
+.faq-answer { padding-bottom: 2.5rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; max-width: 90%; }
+
+/* ── CTA ── */
+.booking-cta { border-top: 1px solid rgba(255,255,255,0.05); }
+.booking-desc { max-width: 600px; margin: 2rem auto 4rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; }
+
+@media (max-width: 1024px) {
+  .service-row { flex-direction: column; align-items: flex-start; gap: 3rem; }
+  .faq-layout { grid-template-columns: 1fr; gap: 4rem; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .process-grid { grid-template-columns: 1fr; }
+}

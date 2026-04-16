@@ -1,0 +1,116 @@
+/* ========================================================
+   YOXI - ULTRA PREMIUM STREETWEAR E-COMMERCE DESIGN
+======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  /* Ultra-modern dark streetwear palette */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-tertiary: #1c1c1c;
+  --bg-glass: rgba(18, 18, 18, 0.65);
+  
+  --text-primary: #f2f2f2;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #52525b;
+  
+  --accent-primary: #ffffff;
+  --accent-hover: #d4d4d8;
+  
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  
+  /* Layout */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-bounce: 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px rgba(255,255,255,0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────
+   GLOBAL STRUCTURAL UTILITIES
+───────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+.section-padding { padding: 120px 0; }
+@media (max-width: 768px) { .section-padding { padding: 80px 0; } }
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.display-title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fff 0%, #71717a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   EFFECTS & FORMS
+───────────────────────────────────────────── */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--bg-tertiary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
