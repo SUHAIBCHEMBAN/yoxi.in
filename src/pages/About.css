@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────
-   ABOUT PAGE - DARK PREMIUM STREETWEAR layout
+   ABOUT PAGE - DARK PREMIUM STREETWEAR LAYOUT
 ───────────────────────────────────────────── */
 
 .about-page {
@@ -7,9 +7,9 @@
   min-height: 100vh;
 }
 
-/* ── Hero ── */
+/* ── Hero Section ── */
 .about-hero {
-  height: 80vh;
+  height: 85vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -31,29 +31,34 @@
 
 .about-hero-content {
   position: relative; z-index: 1;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .about-hero-kicker {
-  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.25em;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.3em;
   text-transform: uppercase; color: var(--text-secondary); margin-bottom: 2rem;
 }
 
 .about-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 8vw, 6.5rem);
-  font-weight: 400; color: #fff; line-height: 0.95;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  font-weight: 400; color: #fff; line-height: 0.9;
+  letter-spacing: -0.04em;
 }
 .about-hero-title em { font-style: italic; color: var(--text-tertiary); }
 
 .about-hero-desc {
-  font-size: 1.2rem; font-weight: 300; line-height: 1.8;
-  color: var(--text-secondary); margin-top: 3rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; line-height: 1.7;
+  color: var(--text-secondary); margin-top: 3.5rem;
+  max-width: 650px;
 }
 
 /* ── Story Grid ── */
 .story-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  display: grid; 
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 8rem; 
+  align-items: center;
 }
 
 .story-img-wrap { position: relative; }
@@ -62,94 +67,147 @@
   filter: contrast(1.1) brightness(0.9);
 }
 .story-img-tag {
-  position: absolute; bottom: 2rem; right: -2rem;
-  background: #fff; color: #000; padding: 1rem 2rem;
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; border-radius: var(--radius-sm);
+  position: absolute; bottom: 3rem; right: -2rem;
+  background: #fff; color: #000; padding: 1.2rem 2.5rem;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em;
+  text-transform: uppercase; border-radius: 4px;
 }
 
 .story-stats {
-  display: flex; gap: 4rem; margin-top: 4rem;
+  display: flex; gap: 5rem; margin-top: 5rem;
 }
-.story-stat { display: flex; flex-direction: column; gap: 0.5rem; }
-.story-stat-n { font-family: var(--font-serif); font-size: 3rem; color: #fff; }
-.story-stat-l { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-tertiary); }
+.story-stat { display: flex; flex-direction: column; gap: 0.8rem; }
+.story-stat-n { font-family: var(--font-serif); font-size: 3.5rem; color: #fff; line-height: 1; }
+.story-stat-l { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-tertiary); }
 
 /* ── Timeline ── */
 .timeline-section { background: var(--bg-secondary); }
-.timeline-header { text-align: center; margin-bottom: 6rem; }
+.timeline-header { text-align: center; margin-bottom: 8rem; }
 
 .timeline {
-  max-width: 800px; margin: 0 auto;
+  max-width: 900px; margin: 0 auto;
   position: relative;
 }
 .timeline::before {
   content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 1px; background: rgba(255,255,255,0.1);
+  width: 1px; background: rgba(255,255,255,0.08);
 }
 
 .timeline-item {
   display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 4rem; width: 100%;
+  margin-bottom: 6rem; width: 100%;
 }
 .timeline-item:nth-child(even) { flex-direction: row-reverse; }
 
 .timeline-year {
-  width: 45%; font-family: var(--font-serif); font-size: 2.5rem; color: #fff;
+  width: 45%; font-family: var(--font-serif); font-size: 3rem; color: #fff;
   text-align: right;
 }
 .timeline-item:nth-child(even) .timeline-year { text-align: left; }
 
 .timeline-dot {
-  width: 12px; height: 12px; background: #fff; border-radius: 50%;
-  position: relative; z-index: 2; box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  width: 14px; height: 14px; background: #fff; border-radius: 50%;
+  position: relative; z-index: 2; box-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
 .timeline-event {
-  width: 45%; font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary);
+  width: 42%; font-size: 1rem; line-height: 1.8; color: var(--text-secondary);
   font-weight: 300;
 }
 
 /* ── Weavers/Team ── */
 .weavers-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
 }
 .weaver-card {
-  background: var(--bg-tertiary); padding: 3rem; border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 2rem;
+  background: var(--bg-tertiary); padding: 4rem; border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.04); display: flex; flex-direction: column; gap: 2.5rem;
 }
 .weaver-img {
-  width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+  width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
   filter: grayscale(1);
 }
-.weaver-info h3 { font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
-.weaver-role { font-size: 0.75rem; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1.5rem; }
-.weaver-bio { font-size: 0.95rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+.weaver-info h3 { font-size: 1.8rem; color: #fff; margin-bottom: 0.8rem; font-weight: 400; }
+.weaver-role { font-size: 0.7rem; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 2rem; }
+.weaver-bio { font-size: 1rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; }
 
 /* ── Craft/Curation ── */
 .about-craft { background: var(--bg-tertiary); position: relative; overflow: hidden; }
-.craft-grid { gap: 4rem; }
-.craft-item { display: flex; flex-direction: column; gap: 1.5rem; }
-.craft-item-num { font-family: var(--font-serif); font-size: 4rem; color: rgba(255,255,255,0.05); line-height: 1; }
-.craft-item h3 { font-size: 1.25rem; color: #fff; }
-.craft-item p { font-size: 0.95rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+.craft-grid { gap: 5rem; }
+.craft-item { display: flex; flex-direction: column; gap: 2rem; }
+.craft-item-num { font-family: var(--font-serif); font-size: 5rem; color: rgba(255,255,255,0.04); line-height: 1; }
+.craft-item h3 { font-size: 1.4rem; color: #fff; font-weight: 400; }
+.craft-item p { font-size: 1rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; }
 
 /* ── Materials ── */
-.materials-subtitle { max-width: 600px; margin: 0 auto 4rem; text-align: center; color: var(--text-secondary); font-weight: 300; }
+.materials-subtitle { max-width: 700px; margin: 0 auto 5rem; text-align: center; color: var(--text-secondary); font-weight: 300; font-size: 1.1rem; }
 .material-card {
-  display: flex; flex-direction: column; gap: 1.5rem;
+  display: flex; flex-direction: column; gap: 2rem;
+  max-width: 100%;
 }
-.material-img-wrapper { aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; background: var(--bg-tertiary); }
-.material-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5); transition: all 0.6s; }
-.material-card:hover .material-img { filter: grayscale(0); transform: scale(1.05); }
-.material-card h3 { font-size: 1.1rem; color: #fff; }
-.material-card p { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+.material-img-wrapper { 
+  aspect-ratio: 4/5; 
+  border-radius: var(--radius-md); 
+  overflow: hidden; 
+  background: var(--bg-tertiary); 
+}
+.material-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.5); transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter var(--transition-smooth); }
+.material-card:hover .material-img { filter: grayscale(0); transform: scale(1.08); }
+.material-card h3 { font-size: 1.3rem; color: #fff; font-weight: 400; }
+.material-card p { font-size: 0.95rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; }
 
-@media (max-width: 900px) {
-  .story-grid, .weavers-grid { grid-template-columns: 1fr; gap: 4rem; }
-  .timeline::before { left: 0; }
-  .timeline-item { flex-direction: row !important; align-items: flex-start; gap: 2rem; justify-content: flex-start; }
-  .timeline-year { width: auto; text-align: left !important; font-size: 1.8rem; }
-  .timeline-event { width: auto; flex: 1; }
-  .timeline-dot { margin-top: 1rem; }
+/* ── Utility Grids ── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE RESPONSIVENESS OVERHAUL
+───────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .story-grid { gap: 4rem; }
+}
+
+@media (max-width: 991px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .weavers-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .story-grid { grid-template-columns: 1fr; gap: 5rem; text-align: center; }
+  .story-stats { justify-content: center; }
+  .about-hero-content { text-align: center; margin: 0 auto; }
+  .about-hero-desc { margin: 3rem auto 0; }
+}
+
+@media (max-width: 768px) {
+  .about-hero { height: 75vh; }
+  .about-hero-title { font-size: 4rem; }
+  .section-title { font-size: 2.8rem; text-align: center; }
+  .timeline::before { left: 5%; }
+  .timeline-item { flex-direction: row !important; justify-content: flex-start; gap: 2.5rem; margin-bottom: 5rem; }
+  .timeline-year { width: auto; font-size: 2.2rem; text-align: left !important; }
+  .timeline-event { width: auto; flex: 1; text-align: left; }
+  .timeline-dot { left: 5%; margin-left: -7px; }
+  
+  .weaver-card { padding: 3rem 2rem; align-items: center; text-align: center; }
+  .story-stats { gap: 3rem; flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 580px) {
+  .grid-3 { grid-template-columns: 1fr; gap: 4rem; }
+  .about-hero-title { font-size: 3.2rem; }
+  .story-img-tag { right: 0; bottom: 0; padding: 1rem 2rem; font-size: 0.6rem; }
+  .story-stat-n { font-size: 2.8rem; }
+  .weavers-intro { font-size: 1rem; }
+  .material-card { max-width: 420px; margin: 0 auto; }
+  .section-title { font-size: 2.4rem; }
+  .timeline-item { gap: 1.5rem; }
+  .timeline-year { font-size: 1.8rem; }
+  .timeline-event { font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .about-hero-title { font-size: 2.8rem; }
+  .section-padding { padding: 70px 0; }
 }

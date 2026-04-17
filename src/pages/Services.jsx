@@ -16,7 +16,7 @@ const Services = () => {
     {
       id: 2,
       title: 'Fit & Alteration Service',
-      desc: 'Found a shirt you love but the sleeves are slightly long? Our in-store tailor team at our Kochi flagship handles minor alterations — cuffs, hem length, trouser break — so every YOXI piece fits perfectly on you.',
+      desc: 'Found a shirt you love but the sleeves are slightly long? Our in-store tailor team at our Chelari flagship handles minor alterations — cuffs, hem length, trouser break — so every YOXI piece fits perfectly on you.',
       image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&auto=format&fit=crop&q=80',
     },
     {
@@ -28,7 +28,7 @@ const Services = () => {
   ];
 
   const processSteps = [
-    { num: '01', title: 'Book a Session',  desc: 'Schedule online or visit us in-store at our Kochi, Thiruvananthapuram or Kozhikode locations.' },
+    { num: '01', title: 'Book a Session',  desc: 'Schedule online or visit us in-store at our Chelari, Thiruvananthapuram or Kozhikode locations.' },
     { num: '02', title: 'Style Discovery', desc: 'Our stylist walks through your lifestyle, body type and preferences to understand what you actually need.' },
     { num: '03', title: 'We Curate',       desc: 'We pull together a selection of shirts and trousers from our current stock and imports — tailored to you.' },
     { num: '04', title: 'Try & Confirm',   desc: "Try everything on in-store or at home. Keep only what you love. Return what you don't — no questions." },
@@ -37,7 +37,7 @@ const Services = () => {
 
   const faqs = [
     { q: 'How much does a style consultation cost?', a: 'Consultations are free for in-store visits. Virtual sessions are ₹499 for 30 minutes, fully redeemable on your first purchase.' },
-    { q: 'Do you offer alterations on imports?', a: 'Yes — we offer standard alterations (sleeve length, hem, trouser break) for ₹199–₹499 per piece at our Kochi store.' },
+    { q: 'Do you offer alterations on imports?', a: 'Yes — we offer standard alterations (sleeve length, hem, trouser break) for ₹199–₹499 per piece at our Chelari store.' },
     { q: 'Can I return pieces from the wardrobe curation package?', a: "Yes. The wardrobe curation package includes a 10-day return window on any pieces that don't work for you." },
     { q: 'Do you ship the wardrobe package outside Kerala?', a: 'Yes — we ship pan India and to the UAE, UK, USA and 40+ countries. International packaging is available on request.' },
     { q: 'What sizes do you stock?', a: "S to 3XL across most styles. Oversized pieces are labelled with a secondary \"true size\" guide so you know exactly what to expect." },
@@ -73,7 +73,7 @@ const Services = () => {
                 <span className="service-number">0{service.id}</span>
                 <h2 className="section-title">{service.title}</h2>
                 <p className="service-desc">{service.desc}</p>
-                <Button variant="text">Book Now →</Button>
+                <Button to="/shop" variant="text">Book Now →</Button>
               </AnimatedSection>
             </div>
           ))}

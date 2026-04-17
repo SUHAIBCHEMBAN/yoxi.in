@@ -102,17 +102,22 @@ const Shop = () => {
       </section>
 
       {/* ── VIP BANNER ── */}
-      <section className="vip-promo">
+      <section className="newsletter-section shop-vip">
         <div className="container">
-          <AnimatedSection animation="fadeUp" className="vip-content">
-            <p className="vip-kicker">Early Access</p>
-            <h2 className="vip-title">Get New Drops First</h2>
-            <p className="vip-desc">
+          <AnimatedSection animation="fadeUp" className="newsletter-inner">
+            <span className="section-kicker">Early Access</span>
+            <h2 className="newsletter-title">Get New Drops First</h2>
+            <p className="newsletter-desc">
               Sign up for early access to imported arrivals, oversized edits and trending styles.
             </p>
-            <form className="vip-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Your Email Address" required />
-              <button type="submit">Join Now</button>
+            <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" className="newsletter-input" placeholder="Your email address" required />
+              <button type="submit" className="newsletter-submit" aria-label="Join">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </form>
           </AnimatedSection>
         </div>

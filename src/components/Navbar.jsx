@@ -34,27 +34,38 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
+          
+          {/* 1. Desktop Left / Mobile Hamburger */}
+          <div className="nav-left">
+            <ul className="nav-links desktop-only">
+              {navLinks.slice(0, 2).map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <button
+              className="hamburger mobile-only"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              <span className={`bar bar-top ${mobileMenuOpen ? 'open' : ''}`} />
+              <span className={`bar bar-mid ${mobileMenuOpen ? 'open' : ''}`} />
+              <span className={`bar bar-bot ${mobileMenuOpen ? 'open' : ''}`} />
+            </button>
+          </div>
 
-          {/* Left links */}
-          <ul className="nav-links">
-            {navLinks.slice(0, 2).map((link) => (
-              <li key={link.name}>
-                <Link to={link.path} className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}>
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Centre logo */}
+          {/* 2. Centre logo */}
           <Link to="/" className="logo">
             <span className="logo-text">YOXI</span>
-            <span className="logo-sub">Premiun Essentials</span>
+            <span className="logo-sub">Premium Essentials</span>
           </Link>
 
-          {/* Right links + actions */}
+          {/* 3. Desktop Right Links + Actions / Mobile Actions */}
           <div className="nav-right">
-            <ul className="nav-links">
+            <ul className="nav-links desktop-only">
               {navLinks.slice(2).map((link) => (
                 <li key={link.name}>
                   <Link to={link.path} className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}>
@@ -64,10 +75,10 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="nav-actions">
-              <button className="icon-btn" aria-label="Search" onClick={() => setSearchOpen(!searchOpen)}>
+              <button className="icon-btn search-trigger" onClick={() => setSearchOpen(!searchOpen)}>
                 <Search size={18} strokeWidth={1.5} />
               </button>
-              <Link to="/wishlist" className="icon-btn" aria-label="Wishlist">
+              <Link to="/wishlist" className="icon-btn desktop-only" aria-label="Wishlist">
                 <Heart size={18} strokeWidth={1.5} />
                 {wishlistCount > 0 && <span className="cart-dot empty" />}
               </Link>
@@ -77,29 +88,9 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-
-          {/* Mobile controls */}
-          <div className="nav-mobile-controls">
-            <button className="icon-btn search-trigger" onClick={() => setSearchOpen(!searchOpen)}>
-              <Search size={20} strokeWidth={1.5} />
-            </button>
-            <Link to="/cart" className="icon-btn" aria-label="Cart">
-              <ShoppingBag size={20} strokeWidth={1.5} />
-              {cartCount > 0 && <span className="cart-dot">{cartCount}</span>}
-            </Link>
-            <button
-              className="hamburger"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Menu"
-            >
-              <span className={`bar bar-top ${mobileMenuOpen ? 'open' : ''}`} />
-              <span className={`bar bar-mid ${mobileMenuOpen ? 'open' : ''}`} />
-              <span className={`bar bar-bot ${mobileMenuOpen ? 'open' : ''}`} />
-            </button>
-          </div>
         </div>
 
-        {/* Search bar */}
+        {/* Search bar overlay */}
         <div className={`search-bar ${searchOpen ? 'open' : ''}`}>
           <div className="search-inner">
             <Search size={18} strokeWidth={1.5} />

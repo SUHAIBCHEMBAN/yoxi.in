@@ -9,7 +9,7 @@ const About = () => {
   ];
 
   const milestones = [
-    { year: '2014', event: 'YOXI launched in Kochi — originally as a curated menswear boutique on MG Road, focused on shirts and trousers for young Kerala professionals.' },
+    { year: '2014', event: 'YOXI launched in Chelari — originally as a curated menswear boutique in Malappuram, focused on shirts and trousers for young Kerala professionals.' },
     { year: '2018', event: 'Launched online delivery across Kerala and to the Kerala diaspora in the UAE, UK and USA — reaching 10,000 customers in the first year.' },
     { year: '2021', event: 'Introduced the Imported Collection — sourcing directly from Korean, Japanese and Turkish mills to bring international quality to ₹India pricing.' },
     { year: '2024', event: 'Crossed 50,000 orders. Named one of the top 10 emerging menswear brands in South India by GQ India.' },
@@ -44,13 +44,13 @@ const About = () => {
           <div className="story-grid">
             <AnimatedSection animation="slideInRight" className="story-img-wrap">
               <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&auto=format&fit=crop&q=80" alt="YOXI style" className="story-img" />
-              <div className="story-img-tag">Est. 2014 · Kochi, Kerala</div>
+              <div className="story-img-tag">Est. 2014 · Chelari, Malappuram</div>
             </AnimatedSection>
             <AnimatedSection animation="fadeUp" delay={0.2} className="story-text">
               <span className="subtitle">The Founding</span>
               <h2 className="section-title">Built for Kerala Men</h2>
               <p>
-                YOXI was founded in Kochi in 2014 with one clear focus — shirts and pants.
+                YOXI was founded in Chelari in 2014 with one clear focus — shirts and pants.
                 Not ethnic wear, not occasion-based fashion. Just the best everyday shirts and
                 trousers a Kerala man can wear to work, to the beach, to a rooftop, or nowhere in particular.
               </p>
@@ -109,7 +109,7 @@ const About = () => {
               <div className="weaver-info">
                 <h3>Arjun P.</h3>
                 <span className="weaver-role">Founder &amp; Creative Director</span>
-                <p className="weaver-bio">Grew up between Kochi and London. Obsessed with the intersection of global fashion and Kerala sensibility. Started YOXI to fill the gap he kept running into.</p>
+                <p className="weaver-bio">Grew up between Chelari and London. Obsessed with the intersection of global fashion and Kerala sensibility. Started YOXI to fill the gap he kept running into.</p>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="fadeUp" delay={0.25} className="weaver-card">

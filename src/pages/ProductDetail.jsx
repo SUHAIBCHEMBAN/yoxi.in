@@ -16,10 +16,21 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedSize, setSelectedSize] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
   const [activeImage, setActiveImage] = useState(0);
   const [added, setAdded] = useState(false);
 
   const isWished = isInWishlist(id);
+
+  // Derive unique sizes from variants
+  const availableSizes = product?.variants 
+    ? [...new Set(product.variants.filter(v => v.stock > 0).map(v => v.size))] 
+    : ['S', 'M', 'L', 'XL', 'XXL'];
+
+  // Derive colors based on selected size
+  const availableColorsForSize = product?.variants && selectedSize
+    ? product.variants.filter(v => v.size === selectedSize && v.stock > 0).map(v => v.color)
+    : [];
 
   useEffect(() => {
     const fetchProductAndRelated = async () => {
@@ -57,7 +68,11 @@ const ProductDetail = () => {
       alert('Please select a size');
       return;
     }
-    addToCart({ ...product, size: selectedSize });
+    if (product.variants && product.variants.length > 0 && !selectedColor) {
+      alert('Please select a color');
+      return;
+    }
+    addToCart({ ...product, size: selectedSize, color: selectedColor });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -78,8 +93,9 @@ const ProductDetail = () => {
     </div>
   );
 
-  // Default images if none provided
-  const images = product.images || [product.image];
+  // Default images if none provided - filtered to remove empty values
+  const rawImages = product.images || [product.image];
+  const images = rawImages.filter(img => img && img.trim() !== '');
 
   return (
     <div className="product-detail-page">
@@ -103,20 +119,28 @@ const ProductDetail = () => {
             
             {/* Gallery Side */}
             <AnimatedSection animation="fadeUp" className="pd-gallery">
-              <div className="pd-main-img-wrap">
-                <img src={images[activeImage]} alt={product.name} className="pd-main-img" />
-              </div>
-              <div className="pd-thumbnails">
-                {images.map((img, idx) => (
-                  <button 
-                    key={idx} 
-                    className={`pd-thumb-btn ${activeImage === idx ? 'active' : ''}`}
-                    onClick={() => setActiveImage(idx)}
-                  >
-                    <img src={img} alt={`${product.name} view ${idx + 1}`} />
-                  </button>
-                ))}
-              </div>
+              {images.length > 0 ? (
+                <>
+                  <div className="pd-main-img-wrap">
+                    <img src={images[activeImage]} alt={product.name} className="pd-main-img" />
+                  </div>
+                  <div className="pd-thumbnails">
+                    {images.map((img, idx) => (
+                      <button 
+                        key={idx} 
+                        className={`pd-thumb-btn ${activeImage === idx ? 'active' : ''}`}
+                        onClick={() => setActiveImage(idx)}
+                      >
+                        <img src={img} alt={`${product.name} view ${idx + 1}`} />
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="pd-main-img-wrap" style={{ background: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <p style={{ color: 'var(--text-tertiary)' }}>No Image Available</p>
+                </div>
+              )}
             </AnimatedSection>
 
             {/* Info Side */}
@@ -138,17 +162,41 @@ const ProductDetail = () => {
                   <Link to="/services" className="pd-size-guide-link">Size Guide</Link>
                 </div>
                 <div className="pd-sizes">
-                  {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
+                  {availableSizes.map(size => (
                     <button
                       key={size}
                       className={`pd-size-btn ${selectedSize === size ? 'active' : ''}`}
-                      onClick={() => setSelectedSize(size)}
+                      onClick={() => {
+                        setSelectedSize(size);
+                        setSelectedColor(''); // Reset color when size changes
+                      }}
                     >
                       {size}
                     </button>
                   ))}
                 </div>
               </div>
+
+              {/* Color Selector (Only if variants exist) */}
+              {availableColorsForSize.length > 0 && (
+                <div className="pd-size-selector" style={{ marginTop: '2.5rem' }}>
+                  <div className="pd-size-header">
+                    <span className="pd-option-label">Select Color</span>
+                  </div>
+                  <div className="pd-sizes">
+                    {availableColorsForSize.map(color => (
+                      <button
+                        key={color}
+                        className={`pd-size-btn ${selectedColor === color ? 'active' : ''}`}
+                        onClick={() => setSelectedColor(color)}
+                        style={{ padding: '0.8rem 1.5rem', textTransform: 'capitalize' }}
+                      >
+                        {color}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Actions */}
               <div className="pd-actions">

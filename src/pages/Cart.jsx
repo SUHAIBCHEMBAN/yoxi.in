@@ -76,9 +76,9 @@ const Cart = () => {
               <span>Total</span>
               <span>₹{cartTotal.toLocaleString()}</span>
             </div>
-            <button className="checkout-btn">
+            <Link to="/checkout" className="checkout-btn" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               Checkout Now <ArrowRight size={18} style={{ marginLeft: '1rem' }} />
-            </button>
+            </Link>
             <p style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginTop: '1.5rem', textAlign: 'center' }}>
               Secure 256-bit SSL Encrypted Payment
             </p>

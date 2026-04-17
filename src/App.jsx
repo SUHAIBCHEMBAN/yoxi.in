@@ -7,6 +7,7 @@ import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import Contact from './pages/Contact';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import Wishlist from './pages/Wishlist';
 
 // Admin Imports
@@ -24,11 +25,14 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <AuthProvider>
       <ShopProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
             {/* Standard Storefront with Layout */}
             <Route path="/*" element={
@@ -41,6 +45,7 @@ function App() {
                   <Route path="/product/:id" element={<ProductDetail />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
                   <Route path="/wishlist" element={<Wishlist />} />
                   
                   {/* Catch-all to Home */}

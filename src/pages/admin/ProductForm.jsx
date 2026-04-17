@@ -26,6 +26,9 @@ const ProductForm = () => {
     details: ''
   });
 
+  const [variants, setVariants] = useState([]);
+  const [newVariant, setNewVariant] = useState({ size: '', color: '', stock: '' });
+
   useEffect(() => {
     if (id) {
       const fetchProduct = async () => {
@@ -41,6 +44,7 @@ const ProductForm = () => {
             description: data.description || '',
             details: Array.isArray(data.details) ? data.details.join('\n') : (data.details || '')
           });
+          setVariants(data.variants || []);
           const imgs = data.images || (data.image ? [data.image] : []);
           setExistingImages(imgs);
           setPreviews(imgs);
@@ -49,6 +53,19 @@ const ProductForm = () => {
       fetchProduct();
     }
   }, [id]);
+
+  const addVariant = () => {
+    if (!newVariant.size || !newVariant.color || !newVariant.stock) {
+      alert("Please fill all variant fields (Size, Color, Stock)");
+      return;
+    }
+    setVariants([...variants, { ...newVariant, stock: parseInt(newVariant.stock) }]);
+    setNewVariant({ size: '', color: '', stock: '' });
+  };
+
+  const removeVariant = (index) => {
+    setVariants(variants.filter((_, i) => i !== index));
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -100,19 +117,39 @@ const ProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (previews.length === 0) {
-      alert("Please upload at least one image.");
+    
+    // Auto-add URL if something is in the box but not "Added"
+    let updatedExistingImages = [...existingImages];
+    if (imgUrl && imgUrl.startsWith('http')) {
+      updatedExistingImages = [...updatedExistingImages, imgUrl];
+    }
+
+    if (previews.length === 0 && !imgUrl) {
+      alert("Please upload or add at least one image URL.");
       return;
     }
     
     setLoading(true);
     try {
-      const allImageUrls = await uploadImages();
+      const uploadPromises = newImageFiles.map(file => {
+        return new Promise((resolve, reject) => {
+          const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+          const uploadTask = uploadBytesResumable(storageRef, file);
+          uploadTask.on('state_changed', null, (error) => reject(error), async () => {
+            const url = await getDownloadURL(uploadTask.snapshot.ref);
+            resolve(url);
+          });
+        });
+      });
+
+      const newUrls = await Promise.all(uploadPromises);
+      const allImageUrls = [...updatedExistingImages, ...newUrls];
       
       const processedData = {
         ...formData,
         images: allImageUrls,
         image: allImageUrls[0], // Main thumbnail
+        variants: variants,
         details: formData.details ? formData.details.split('\n').filter(line => line.trim() !== '') : []
       };
 
@@ -128,6 +165,23 @@ const ProductForm = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const [imgUrl, setImgUrl] = useState('');
+
+  const addImageUrl = () => {
+    if(!imgUrl) return;
+    
+    // Simple validation
+    if (!imgUrl.startsWith('http')) {
+      alert("Please paste a valid image address starting with http or https");
+      return;
+    }
+
+    setPreviews(prev => [...prev, imgUrl]);
+    setExistingImages(prev => [...prev, imgUrl]);
+    setImgUrl('');
+    console.log("Added Image URL:", imgUrl);
   };
 
   return (
@@ -162,6 +216,31 @@ const ProductForm = () => {
 
             <div className="form-group">
               <label>Inventory Gallery</label>
+              
+              <div className="image-url-adder" style={{ marginBottom: '1.5rem', display: 'flex', gap: '1rem' }}>
+                <input 
+                  type="text" 
+                  value={imgUrl}
+                  onChange={(e) => setImgUrl(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      addImageUrl();
+                    }
+                  }}
+                  placeholder="Paste external image URL (Unsplash, Pinterest, etc.)" 
+                  style={{ flex: 1 }}
+                />
+                <button 
+                  type="button" 
+                  className="add-v-btn" 
+                  style={{ height: 'auto' }}
+                  onClick={addImageUrl}
+                >
+                  Add URL
+                </button>
+              </div>
+
               <div className="multi-upload-container">
                 <div className="previews-grid">
                   {previews.map((src, idx) => (
@@ -176,10 +255,45 @@ const ProductForm = () => {
                   <label className="add-more-btn">
                     <input type="file" multiple onChange={handleFileChange} hidden accept="image/*" />
                     <Upload size={20} />
-                    <span>Add Images</span>
+                    <span>Upload File</span>
                   </label>
                 </div>
               </div>
+            </div>
+
+            {/* VARIANTS SECTION */}
+            <div className="form-group variant-section">
+              <label>Product Variants & Stock</label>
+              <div className="variant-adder">
+                <input 
+                  placeholder="Size (S, M, L, etc)" 
+                  value={newVariant.size} 
+                  onChange={(e) => setNewVariant({...newVariant, size: e.target.value})}
+                />
+                <input 
+                  placeholder="Color (Black, White, etc)" 
+                  value={newVariant.color} 
+                  onChange={(e) => setNewVariant({...newVariant, color: e.target.value})}
+                />
+                <input 
+                  type="number" 
+                  placeholder="Stock" 
+                  value={newVariant.stock} 
+                  onChange={(e) => setNewVariant({...newVariant, stock: e.target.value})}
+                />
+                <button type="button" onClick={addVariant} className="add-v-btn">Add Variant</button>
+              </div>
+
+              {variants.length > 0 && (
+                <div className="variants-list">
+                  {variants.map((v, i) => (
+                    <div key={i} className="variant-tag">
+                      <span>{v.size} - {v.color} ({v.stock})</span>
+                      <button type="button" onClick={() => removeVariant(i)}><X size={12}/></button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="form-group">

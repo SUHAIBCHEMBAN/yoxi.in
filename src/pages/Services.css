@@ -79,11 +79,57 @@
 .booking-cta { border-top: 1px solid rgba(255,255,255,0.05); }
 .booking-desc { max-width: 600px; margin: 2rem auto 4rem; color: var(--text-secondary); font-weight: 300; line-height: 1.8; }
 
-@media (max-width: 1024px) {
-  .service-row { flex-direction: column; align-items: flex-start; gap: 3rem; }
-  .faq-layout { grid-template-columns: 1fr; gap: 4rem; }
-  .process-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) {
+  .service-row, .service-row.reverse { 
+    flex-direction: column !important; 
+    align-items: center; 
+    text-align: center;
+    gap: 2.5rem; 
+    margin-bottom: 80px;
+  }
+  
+  .service-img-container {
+    width: 100%;
+    flex: none;
+  }
+
+  .service-content {
+    width: 100%;
+    flex: none;
+    padding: 0 5%;
+  }
+
+  .faq-layout { 
+    grid-template-columns: 1fr; 
+    gap: 4rem; 
+  }
+  
+  .process-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 3rem 2rem;
+  }
+
+  .display-title {
+    font-size: 3.5rem;
+  }
 }
+
 @media (max-width: 600px) {
-  .process-grid { grid-template-columns: 1fr; }
+  .process-grid { 
+    grid-template-columns: 1fr; 
+    gap: 2.5rem;
+  }
+  
+  .display-title {
+    font-size: 2.8rem;
+  }
+  
+  .section-padding {
+    padding: 80px 0;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 2rem 0;
+  }
 }

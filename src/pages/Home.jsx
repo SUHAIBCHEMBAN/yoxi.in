@@ -170,15 +170,47 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ── FLAGSHIP STORY ── */}
+      <section className="flagship-section section-padding">
+        <div className="container">
+          <div className="flagship-grid">
+            <AnimatedSection animation="slideInRight" className="flagship-content">
+              <span className="section-kicker">Experience</span>
+              <h2 className="section-heading">The Chelari <br />Flagship<em>.</em></h2>
+              <p className="flagship-text">
+                More than a store, our Chelari flagship is a dedicated menswear hub. 
+                Experience our full collection of wide-leg trousers, oversized linens, 
+                and premium imports in an architectural space designed for the modern man.
+              </p>
+              <div className="flagship-details">
+                <div className="f-detail-item">
+                  <span className="f-val">Malappuram</span>
+                  <span className="f-label">Location</span>
+                </div>
+                <div className="f-detail-item">
+                  <span className="f-val">10:00 - 22:00</span>
+                  <span className="f-label">Daily Hours</span>
+                </div>
+              </div>
+              <Link to="/contact" className="hero-cta-primary outline">Visit Flagship</Link>
+            </AnimatedSection>
+            <AnimatedSection animation="fadeUp" delay={0.2} className="flagship-image-wrap">
+              <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=1200&auto=format&fit=crop&q=80" alt="Flagship Interior" className="flagship-img" />
+              <div className="img-caption">Chelari HQ — Kerala</div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       {/* ── PRODUCT GRID OVERHAUL ── */}
       <section className="arrivals-section section-padding">
         <div className="container">
           <AnimatedSection animation="fadeUp" className="arrivals-header">
             <div>
-              <span className="section-kicker">Drop 01</span>
-              <h2 className="section-heading">Featured Pieces</h2>
+              <span className="section-kicker">Latest Selection</span>
+              <h2 className="section-heading">Menswear Essentials</h2>
             </div>
-            <Link to="/shop" className="view-all-link">View All Gallery</Link>
+            <Link to="/shop" className="view-all-link">Shop Collection</Link>
           </AnimatedSection>
           
           <div className="product-grid">
@@ -190,9 +222,33 @@ const Home = () => {
               ))
             ) : (
               <div style={{ color: 'var(--text-tertiary)', textAlign: 'center', gridColumn: '1/-1', padding: '40px' }}>
-                Curating masterpieces...
+                Loading silhouettes...
               </div>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* ── THE PROCESS / CRAFTSMANSHIP ── */}
+      <section className="process-section section-padding">
+        <div className="container">
+          <AnimatedSection animation="fadeUp" className="text-center" style={{ marginBottom: '5rem' }}>
+            <span className="section-kicker">Our Method</span>
+            <h2 className="section-heading">How We Build.</h2>
+          </AnimatedSection>
+          
+          <div className="process-grid">
+            {[
+              { num: '01', title: 'Source', desc: 'We select premium heavyweight cottons and breathable linens from across India and selected imports.' },
+              { num: '02', title: 'Draft', desc: 'Every silhouette is drafted to provide maximum airflow and a modern, relaxed oversized fit.' },
+              { num: '03', title: 'Refine', desc: 'In-house tailoring ensures every hem and seam meets our architectural standards.' }
+            ].map((step, idx) => (
+              <AnimatedSection key={idx} animation="fadeUp" delay={idx * 0.15} className="process-card">
+                <span className="p-num">{step.num}</span>
+                <h3 className="p-title">{step.title}</h3>
+                <p className="p-desc">{step.desc}</p>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
@@ -209,25 +265,52 @@ const Home = () => {
           
           <div className="lookbook-mosaic">
             <AnimatedSection animation="fadeUp" className="lk-cell">
-              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&auto=format&fit=crop&q=80" alt="Look 1" />
+              <img src="https://images.unsplash.com/photo-1675668363014-e1251e6fadc5?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1hbiUyMG5hdnklMjBzdWl0JTIwdGllJTIwbHV4dXJ5JTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D" alt="Look 1" />
               <div className="lk-label">Look 01</div>
             </AnimatedSection>
             <div className="lk-col-right">
               <AnimatedSection animation="fadeUp" delay={0.1} className="lk-cell">
-                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4084?w=1200&auto=format&fit=crop&q=80" alt="Look 2" />
+                <img src="https://images.unsplash.com/photo-1545959308-3f4b859ad821?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3RyZWV0JTIwc3R5bGUlMjBtZW4lMjBvdXRmaXQlMjBqYWNrZXQlMjBzbmVha2VycyUyMHVyYmFufGVufDB8fDB8fHww" alt="Look 2" />
                 <div className="lk-label">Look 02</div>
               </AnimatedSection>
               <div className="lk-row-bottom">
                 <AnimatedSection animation="fadeUp" delay={0.2} className="lk-cell">
-                  <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=800&auto=format&fit=crop&q=80" alt="Look 3" />
+                  <img src="https://images.unsplash.com/photo-1627138601165-49eaa13bc035?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVuJTIwcHJpbnRlZCUyMHNoaXJ0JTIwb3V0Zml0JTIwZmFzaGlvbiUyMGVkaXRvcmlhbCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fDB8fDA%3D" alt="Look 3" />
                   <div className="lk-label">Look 03</div>
                 </AnimatedSection>
                 <AnimatedSection animation="fadeUp" delay={0.3} className="lk-cell">
-                  <img src="https://images.unsplash.com/photo-1536766820879-059fec98ec0a?w=800&auto=format&fit=crop&q=80" alt="Look 4" />
+                  <img src="https://images.unsplash.com/photo-1689396959193-5c1f9dece9e1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVuJTIwY2FzdWFsJTIwb3V0Zml0JTIwd2hpdGUlMjB0c2hpcnQlMjBiYWdneSUyMGplYW5zJTIwY2xlYW4lMjBhZXN0aGV0aWN8ZW58MHx8MHx8fDA%3D" alt="Look 4" />
                   <div className="lk-label">Look 04</div>
                 </AnimatedSection>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EDITORIAL JOURNAL ── */}
+      <section className="editorial-section">
+        <div className="editorial-grid">
+          <AnimatedSection animation="fadeUp" className="editorial-main">
+            <div className="editorial-img-wrap">
+              <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=1600&auto=format&fit=crop&q=80" alt="Editorial Look" />
+              <div className="editorial-overlay" />
+              <div className="editorial-content">
+                <span className="e-kicker">Editorial 01</span>
+                <h2 className="e-title">The Art of <br />Wide Leg.</h2>
+                <Link to="/shop" className="hero-cta-primary">Explore Cut</Link>
+              </div>
+            </div>
+          </AnimatedSection>
+          <div className="editorial-side">
+            <AnimatedSection animation="slideInRight" delay={0.2} className="editorial-card">
+              <img src="https://images.unsplash.com/photo-1516826957135-7117364ece41?w=800&auto=format&fit=crop&q=80" alt="Detail 1" />
+              <div className="e-card-label">Fabric Detail — Heavyweight Cotton</div>
+            </AnimatedSection>
+            <AnimatedSection animation="slideInRight" delay={0.3} className="editorial-card">
+              <img src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?w=800&auto=format&fit=crop&q=80" alt="Detail 2" />
+              <div className="e-card-label">Styling — The Modular Standard</div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -238,17 +321,22 @@ const Home = () => {
           <AnimatedSection animation="fadeUp" className="newsletter-inner">
             <span className="section-kicker">Join the Inner Circle</span>
             <h2 className="newsletter-title">Get Early Access.</h2>
-            <p className="hero-desc" style={{ margin: '0 auto 2rem', color: 'var(--text-secondary)' }}>
-              Priority access to imported drops and limited runs.
+            <p className="newsletter-desc">
+              Priority access to menswear drops and limited runs for our Chelari hub members.
             </p>
             {subscribed ? (
-               <div style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-full)', border: '1px solid rgba(255,255,255,0.1)' }}>
+               <div className="subscription-success">
                  Verified. Welcome to YOXI.
                </div>
             ) : (
               <form className="newsletter-form" onSubmit={handleSubscribe}>
                 <input type="email" className="newsletter-input" placeholder="Your email" value={email} onChange={e => setEmail(e.target.value)} required />
-                <button type="submit" className="newsletter-submit">Join</button>
+                <button type="submit" className="newsletter-submit" aria-label="Join">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
               </form>
             )}
           </AnimatedSection>

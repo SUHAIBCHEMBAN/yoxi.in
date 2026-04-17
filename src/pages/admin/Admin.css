@@ -235,3 +235,90 @@
   background: rgba(255,255,255,0.05);
   color: #fff;
 }
+
+/* ── Variants Section ── */
+.variant-section {
+  margin: 1.5rem 0;
+}
+
+.variant-adder {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: flex-end;
+}
+
+.variant-adder input {
+  flex: 1;
+  min-width: 0; /* Prevents overflow in flexbox */
+}
+
+.variant-adder input[type="number"] {
+  flex: 0.5;
+}
+
+.add-v-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  height: 48px; /* Match input height */
+  padding: 0 1.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.add-v-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.variants-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.variant-tag {
+  background: rgba(255,255,255,0.04);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.variant-tag span {
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.variant-tag button {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+}
+
+.variant-tag button:hover {
+  color: #ff4757;
+}
+
+@media (max-width: 768px) {
+  .variant-adder {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .add-v-btn {
+    width: 100%;
+  }
+}
