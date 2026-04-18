@@ -59,14 +59,16 @@
 /* ── Sizes ── */
 .pd-option-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; }
 .pd-size-guide-link { font-size: 0.75rem; color: var(--text-tertiary); text-decoration: underline; text-underline-offset: 4px; }
-.pd-sizes { display: flex; gap: 1rem; margin-top: 1.5rem; }
+.pd-sizes { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
 .pd-size-btn {
-  width: 50px; height: 50px; border: 1px solid rgba(255,255,255,0.1);
-  background: none; color: #fff; font-family: var(--font-sans); font-size: 0.85rem;
+  min-width: 54px; height: 50px; padding: 0 1rem; border: 1px solid rgba(255,255,255,0.1);
+  background: none; color: #fff; font-family: var(--font-sans); font-size: 0.75rem;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
   border-radius: var(--radius-sm); cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center;
 }
-.pd-size-btn:hover { border-color: #fff; }
-.pd-size-btn.active { background: #fff; color: #000; border-color: #fff; }
+.pd-size-btn:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+.pd-size-btn.active { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,255,255,0.1); }
 .pd-model-note { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 1.5rem; font-style: italic; }
 
 /* ── Actions ── */
@@ -90,19 +92,25 @@
 }
 
 /* ── Details ── */
-.pd-details-box { background: var(--bg-secondary); padding: 3rem; border-radius: var(--radius-md); }
-.pd-details-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; margin-bottom: 2rem; }
-.pd-details-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-.pd-details-list li { font-size: 0.95rem; color: var(--text-secondary); font-weight: 300; display: flex; align-items: center; gap: 1rem; }
-.pd-details-list li::before { content: '✦'; font-size: 0.6rem; color: var(--text-tertiary); }
+.pd-details-box { 
+  background: var(--bg-secondary); 
+  padding: 3rem; 
+  border-radius: var(--radius-md); 
+  border: 1px solid rgba(255,255,255,0.03); 
+  margin-top: 5rem;
+}
+.pd-details-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; margin-bottom: 2.5rem; }
+.pd-details-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+.pd-details-list li { font-size: 0.95rem; color: #d4d4d8; font-weight: 300; display: flex; align-items: flex-start; gap: 1rem; line-height: 1.5; }
+.pd-details-list li::before { content: '✦'; font-size: 0.6rem; color: var(--text-secondary); margin-top: 0.3rem; }
 
 /* ── Shipping ── */
 .pd-shipping-note {
-  display: flex; align-items: center; gap: 2rem; padding: 2.5rem;
-  background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px dashed rgba(255,255,255,0.1);
+  display: flex; align-items: center; gap: 2rem; padding: 2rem 2.5rem;
+  background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);
+  margin-top: 2rem;
 }
-.truck-icon { color: var(--text-secondary); }
-.pd-shipping-note span { font-size: 0.9rem; color: var(--text-secondary); font-weight: 300; line-height: 1.6; }
+.pd-shipping-note span { font-size: 0.9rem; color: #d4d4d8; font-weight: 300; line-height: 1.6; }
 
 /* ── Related ── */
 .pd-related { background: var(--bg-secondary); margin-top: 120px; }

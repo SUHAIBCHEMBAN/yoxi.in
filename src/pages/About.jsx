@@ -3,16 +3,16 @@ import './About.css';
 
 const About = () => {
   const curationPillars = [
-    { name: 'Global Sourcing',   desc: 'We scout manufacturers across India, Japan, Turkey, and South Korea — selecting only pieces that meet our standards for fabric quality and fit.', image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&auto=format&fit=crop&q=80' },
-    { name: 'Trend Accuracy',   desc: 'Our buying team tracks what actually sells in Kerala —oversized shirts, loose trousers, and clean minimal palettes — not what works in Mumbai or Delhi.', image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&auto=format&fit=crop&q=80' },
-    { name: 'Import Quality',    desc: 'Every imported piece is assessed for fabric weight, stitching, and wash durability before we list it. We carry only what we would wear ourselves.', image: 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=600&auto=format&fit=crop&q=80' },
+    { name: 'Global Sourcing',   desc: 'We scout manufacturers across international hubs — selecting only pieces that meet our standards for fabric quality and fit.', image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&auto=format&fit=crop&q=80' },
+    { name: 'Trend Accuracy',   desc: 'Our buying team tracks global movements in oversized shirts, loose trousers, and clean minimal palettes — ensuring our collection stays ahead of the curve.', image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&auto=format&fit=crop&q=80' },
+    { name: 'Import Quality',    desc: 'Every piece is assessed for fabric weight, stitching, and wash durability before it enters our selection. We carry only what we would wear ourselves.', image: 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=600&auto=format&fit=crop&q=80' },
   ];
 
   const milestones = [
-    { year: '2014', event: 'YOXI launched in Chelari — originally as a curated menswear boutique in Malappuram, focused on shirts and trousers for young Kerala professionals.' },
-    { year: '2018', event: 'Launched online delivery across Kerala and to the Kerala diaspora in the UAE, UK and USA — reaching 10,000 customers in the first year.' },
-    { year: '2021', event: 'Introduced the Imported Collection — sourcing directly from Korean, Japanese and Turkish mills to bring international quality to ₹India pricing.' },
-    { year: '2024', event: 'Crossed 50,000 orders. Named one of the top 10 emerging menswear brands in South India by GQ India.' },
+    { year: '2014', event: 'YOXI launched as a curated menswear boutique, focused on defining new standards for shirts and trousers.' },
+    { year: '2018', event: 'Expanded to digital retail, reaching 10,000 customers in the first year through our online flagship.' },
+    { year: '2021', event: 'Introduced the Premium Collection — sourcing directly from specialized mills to bring international quality to our community.' },
+    { year: '2024', event: 'Crossed 50,000 orders. Recognized for our contribution to the evolving landscape of modern menswear.' },
   ];
 
   return (
@@ -27,11 +27,11 @@ const About = () => {
         <div className="container about-hero-content">
           <AnimatedSection animation="fadeUp">
             <p className="about-hero-kicker">Our Story</p>
-            <h1 className="about-hero-title">Dressed in<br/><em>Kerala.</em></h1>
+            <h1 className="about-hero-title">Crafted with<br/><em>Purpose.</em></h1>
             <p className="about-hero-desc">
-              YOXI started with a simple belief — Kerala men have great taste and
-              deserve great clothes. Not ethnic wear. Not fast fashion. Shirts and pants
-              that actually fit the way you want to live.
+              YOXI started with a simple belief — modern men deserve better 
+              clothes. Not fast fashion. Not generic trends. Pieces 
+              that actually fit the way you live.
             </p>
           </AnimatedSection>
         </div>
@@ -44,21 +44,21 @@ const About = () => {
           <div className="story-grid">
             <AnimatedSection animation="slideInRight" className="story-img-wrap">
               <img src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=800&auto=format&fit=crop&q=80" alt="YOXI style" className="story-img" />
-              <div className="story-img-tag">Est. 2014 · Chelari, Malappuram</div>
+              <div className="story-img-tag">Est. 2014 · Design Collective</div>
             </AnimatedSection>
             <AnimatedSection animation="fadeUp" delay={0.2} className="story-text">
               <span className="subtitle">The Founding</span>
-              <h2 className="section-title">Built for Kerala Men</h2>
+              <h2 className="section-title">Built for Modern Living</h2>
               <p>
-                YOXI was founded in Chelari in 2014 with one clear focus — shirts and pants.
-                Not ethnic wear, not occasion-based fashion. Just the best everyday shirts and
-                trousers a Kerala man can wear to work, to the beach, to a rooftop, or nowhere in particular.
+                YOXI was founded in 2014 with one clear focus — the perfect silhouette.
+                Not occasion-based fashion, not fleeting trends. Just the best everyday 
+                essentials a person can wear to work, to travel, or nowhere in particular.
               </p>
               <p>
-                We noticed that most Indian menswear brands were designing for Delhi or Mumbai.
-                Kerala men dress differently — they're influenced by global trends, they value
-                comfort in a tropical climate, and they know good fabric when they feel it.
-                YOXI was built to serve exactly that customer.
+                We noticed that most menswear was designed for a static world. 
+                Modern men move differently — they're influenced by global trends, they value
+                comfort in urban climates, and they know good fabric when they feel it.
+                YOXI was built to serve exactly that community.
               </p>
               <div className="story-stats">
                 {[['50K+', 'Orders Delivered'], ['500+', 'Active Styles'], ['24hr', 'Dispatch']].map(([n, l]) => (
@@ -99,8 +99,8 @@ const About = () => {
             <span className="subtitle">The People</span>
             <h2 className="section-title">Meet the Team</h2>
             <p className="weavers-intro">
-              YOXI is run by a small team of fashion obsessives who live in Kerala and
-              genuinely care about what men here want to wear.
+              YOXI is run by a dedicated team of design seekers who
+              genuinely care about how clothes translate to real life.
             </p>
           </AnimatedSection>
           <div className="weavers-grid">
@@ -109,7 +109,7 @@ const About = () => {
               <div className="weaver-info">
                 <h3>Arjun P.</h3>
                 <span className="weaver-role">Founder &amp; Creative Director</span>
-                <p className="weaver-bio">Grew up between Chelari and London. Obsessed with the intersection of global fashion and Kerala sensibility. Started YOXI to fill the gap he kept running into.</p>
+                <p className="weaver-bio">Deeply integrated into the intersection of global minimalist design and functional silhouettes. Started YOXI to fill the gap he kept running into in his own wardrobe.</p>
               </div>
             </AnimatedSection>
             <AnimatedSection animation="fadeUp" delay={0.25} className="weaver-card">
@@ -132,7 +132,7 @@ const About = () => {
             <h2 className="section-title text-center" style={{ color: '#fff', marginBottom: '3rem' }}>The Curation Standard</h2>
             <div className="craft-grid grid-3">
               {[
-                { num: '01', title: 'Feel the Fabric',      desc: "Every piece is assessed for weight, hand-feel, breathability and how it performs in Kerala's humid climate." },
+                { num: '01', title: 'Feel the Fabric',      desc: "Every piece is assessed for weight, hand-feel, breathability and how it performs in urban environments." },
                 { num: '02', title: 'Check the Fit',        desc: "If it doesn't drape right — whether that's oversized, loose or tailored — it doesn't make the cut. We try everything on." },
                 { num: '03', title: 'Verify the Wash',      desc: "We wash samples repeatedly and check for shrinkage, colour bleed and shape retention before ordering stock." },
               ].map(({ num, title, desc }) => (
@@ -152,7 +152,7 @@ const About = () => {
         <div className="container">
           <AnimatedSection className="text-center" style={{ marginBottom: '4rem' }}>
             <span className="subtitle">Where We Source</span>
-            <h2 className="section-title">India &amp; Beyond</h2>
+            <h2 className="section-title">Global Sourcing</h2>
             <p className="materials-subtitle">
               Our collection is a curated mix of Indian-made and internationally sourced shirts and trousers —
               chosen on merit, not origin.

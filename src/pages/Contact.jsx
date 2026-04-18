@@ -81,10 +81,14 @@ const Contact = () => {
       <section className="virtual-concierge section-padding">
         <div className="container">
           <AnimatedSection animation="fadeUp" className="concierge-box">
-             <div className="concierge-content">
-                <h2 className="newsletter-title" style={{ fontSize: '2.5rem' }}>Virtual Concierge</h2>
-                <p>Can't visit Chelari? Book a private video consultation with our stylists.</p>
-                <Button to="/services" variant="primary">Book Virtual Session</Button>
+             <div className="concierge-overlay">
+               <div className="concierge-content">
+                  <h2 className="newsletter-title">Virtual Concierge</h2>
+                  <p>Unable to visit us in person? Book a private video consultation with our lead stylists and explore the collection from anywhere.</p>
+                  <div className="concierge-actions">
+                    <Button to="/services" variant="primary">Book Virtual Session</Button>
+                  </div>
+               </div>
              </div>
           </AnimatedSection>
         </div>

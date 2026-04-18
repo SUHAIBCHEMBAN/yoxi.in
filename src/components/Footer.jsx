@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="fm-track">
           {Array(8).fill(null).map((_, i) => (
             <span key={i} className="fm-item">
-              SHIRTS &amp; PANTS · YOXI · OVERSIZED FITS · IMPORTED STYLES · KERALA FASHION · NEW ARRIVALS ·&nbsp;
+              SHIRTS &amp; PANTS · YOXI · OVERSIZED FITS · IMPORTED STYLES · MODERN SILHOUETTES · NEW ARRIVALS ·&nbsp;
             </span>
           ))}
         </div>
@@ -33,8 +33,8 @@ const Footer = () => {
           <div className="footer-brand">
             <Link to="/" className="footer-logo">YOXI</Link>
             <p className="footer-tagline">
-              Shirts and trousers for the modern Kerala man — curated from
-              India and around the world, delivered to your door.
+              Shirts and trousers for the modern individual — curated from
+              design hubs around the world, delivered to your door.
             </p>
             <div className="social-row">
               <a href="#" aria-label="Instagram" className="social-link"><FaInstagram size={16} /></a>

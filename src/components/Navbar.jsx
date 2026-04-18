@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Search, X, Heart } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ShoppingBag, Search, X, Heart, ArrowRight } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import './Navbar.css';
 
 const Navbar = () => {
-  const { cartCount, wishlistCount, searchQuery, setSearchQuery } = useShop();
+  const { cartCount, wishlistCount, searchQuery, setSearchQuery, products } = useShop();
   const [isScrolled, setIsScrolled]     = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen]     = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const filteredResults = searchQuery.trim() === '' 
+    ? [] 
+    : products.filter(p => 
+        p.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.category?.toLowerCase().includes(searchQuery.toLowerCase())
+      ).slice(0, 8); // Show up to 8 results
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
@@ -99,12 +107,56 @@ const Navbar = () => {
               placeholder="Search collections..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setSearchOpen(false);
+                  navigate('/shop');
+                }
+              }}
               autoFocus={searchOpen}
             />
             <button onClick={() => {setSearchOpen(false); setSearchQuery('');}} className="search-close">
               <X size={18} />
             </button>
           </div>
+
+          {searchQuery && (
+            <div className="search-results-container">
+              {filteredResults.length > 0 ? (
+                <div className="search-results">
+                  {filteredResults.map(product => (
+                    <Link 
+                      key={product.id} 
+                      to={`/product/${product.id}`} 
+                      className="search-result-item"
+                      onClick={() => setSearchOpen(false)}
+                    >
+                      <img src={product.image} alt={product.name} className="search-result-img" />
+                      <div className="search-result-info">
+                        <span className="search-result-name">{product.name}</span>
+                        <span className="search-result-price">{product.price}</span>
+                      </div>
+                    </Link>
+                  ))}
+                  <div className="view-all-results">
+                    <button 
+                      className="view-all-btn"
+                      onClick={() => {
+                        setSearchOpen(false);
+                        navigate('/shop');
+                      }}
+                    >
+                      View All Results <ArrowRight size={14} style={{ marginLeft: '8px' }} />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="search-results-empty">
+                  No products found for "{searchQuery}"
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </nav>
 

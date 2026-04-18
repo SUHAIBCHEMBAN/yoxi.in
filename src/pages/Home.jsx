@@ -21,7 +21,7 @@ const HERO_SLIDES = [
     kicker: 'The Modern Minimal',
     title1: 'Sharp',
     title2: 'Linens.',
-    desc: 'Breathable imported fabrics crafted for the modern Kerala climate. Effortless sophistication in every thread.',
+    desc: 'Breathable imported fabrics crafted for the modern urban climate. Effortless sophistication in every thread.',
     image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=2000&auto=format&fit=crop&q=80'
   },
   {
@@ -176,15 +176,15 @@ const Home = () => {
           <div className="flagship-grid">
             <AnimatedSection animation="slideInRight" className="flagship-content">
               <span className="section-kicker">Experience</span>
-              <h2 className="section-heading">The Chelari <br />Flagship<em>.</em></h2>
+              <h2 className="section-heading">The Brand <br />Flagship<em>.</em></h2>
               <p className="flagship-text">
-                More than a store, our Chelari flagship is a dedicated menswear hub. 
+                More than a store, our flagship is a dedicated menswear hub. 
                 Experience our full collection of wide-leg trousers, oversized linens, 
                 and premium imports in an architectural space designed for the modern man.
               </p>
               <div className="flagship-details">
                 <div className="f-detail-item">
-                  <span className="f-val">Malappuram</span>
+                  <span className="f-val">Flagship HQ</span>
                   <span className="f-label">Location</span>
                 </div>
                 <div className="f-detail-item">
@@ -196,7 +196,6 @@ const Home = () => {
             </AnimatedSection>
             <AnimatedSection animation="fadeUp" delay={0.2} className="flagship-image-wrap">
               <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=1200&auto=format&fit=crop&q=80" alt="Flagship Interior" className="flagship-img" />
-              <div className="img-caption">Chelari HQ — Kerala</div>
             </AnimatedSection>
           </div>
         </div>
@@ -239,7 +238,7 @@ const Home = () => {
           
           <div className="process-grid">
             {[
-              { num: '01', title: 'Source', desc: 'We select premium heavyweight cottons and breathable linens from across India and selected imports.' },
+              { num: '01', title: 'Source', desc: 'We select premium heavyweight cottons and breathable linens from global textile hubs and selected imports.' },
               { num: '02', title: 'Draft', desc: 'Every silhouette is drafted to provide maximum airflow and a modern, relaxed oversized fit.' },
               { num: '03', title: 'Refine', desc: 'In-house tailoring ensures every hem and seam meets our architectural standards.' }
             ].map((step, idx) => (
@@ -293,7 +292,7 @@ const Home = () => {
         <div className="editorial-grid">
           <AnimatedSection animation="fadeUp" className="editorial-main">
             <div className="editorial-img-wrap">
-              <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=1600&auto=format&fit=crop&q=80" alt="Editorial Look" />
+              <img src="https://images.unsplash.com/photo-1647289114629-d37cce0c5743?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1pbmltYWwlMjBtZW5zd2VhciUyMGFyY2hpdGVjdHVyZSUyMGNpcmNsZSUyMGZyYW1lJTIwYWVzdGhldGljfGVufDB8fDB8fHww" alt="Editorial Look" />
               <div className="editorial-overlay" />
               <div className="editorial-content">
                 <span className="e-kicker">Editorial 01</span>
@@ -304,11 +303,11 @@ const Home = () => {
           </AnimatedSection>
           <div className="editorial-side">
             <AnimatedSection animation="slideInRight" delay={0.2} className="editorial-card">
-              <img src="https://images.unsplash.com/photo-1516826957135-7117364ece41?w=800&auto=format&fit=crop&q=80" alt="Detail 1" />
+              <img src="https://images.unsplash.com/photo-1637785455175-9bba20c7149f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1lbiUyMGNhc3VhbCUyMHBvcnRyYWl0JTIwYmxhY2slMjBhbmQlMjB3aGl0ZSUyMG1pbmltYWwlMjBmYXNoaW9ufGVufDB8fDB8fHww" alt="Detail 1" />
               <div className="e-card-label">Fabric Detail — Heavyweight Cotton</div>
             </AnimatedSection>
             <AnimatedSection animation="slideInRight" delay={0.3} className="editorial-card">
-              <img src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?w=800&auto=format&fit=crop&q=80" alt="Detail 2" />
+              <img src="https://images.unsplash.com/photo-1618591552964-837a5a315fb2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1lbnN3ZWFyJTIwZmFicmljJTIwY2xvc2UlMjB1cCUyMGNvdHRvbiUyMHRleHR1cmUlMjBzaGlydCUyMGRldGFpbHxlbnwwfHwwfHx8MA%3D%3D" alt="Detail 2" />
               <div className="e-card-label">Styling — The Modular Standard</div>
             </AnimatedSection>
           </div>
@@ -322,7 +321,7 @@ const Home = () => {
             <span className="section-kicker">Join the Inner Circle</span>
             <h2 className="newsletter-title">Get Early Access.</h2>
             <p className="newsletter-desc">
-              Priority access to menswear drops and limited runs for our Chelari hub members.
+              Priority access to menswear drops and limited runs for our community members.
             </p>
             {subscribed ? (
                <div className="subscription-success">

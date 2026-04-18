@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { db } from '../firebase/config';
+import { collection, getDocs } from 'firebase/firestore';
 
 const ShopContext = createContext();
 
@@ -16,6 +18,33 @@ export const ShopProvider = ({ children }) => {
   });
 
   const [searchQuery, setSearchQuery] = useState('');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const pData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setProducts(pData);
+
+        // Sync cart stock after products are loaded
+        setCart(prevCart => prevCart.map(item => {
+          const match = pData.find(p => p.id === item.id);
+          if (match && match.variants) {
+            const variant = match.variants.find(v => v.size === item.size && v.color === item.color);
+            return { ...item, maxStock: variant ? variant.stock : 99 };
+          }
+          return item;
+        }));
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('yoxi_cart', JSON.stringify(cart));
@@ -27,31 +56,57 @@ export const ShopProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCart(prev => {
-      const exists = prev.find(item => item.id === product.id);
+      const exists = prev.find(item => 
+        item.id === product.id && 
+        item.size === product.size && 
+        item.color === product.color
+      );
       if (exists) {
         return prev.map(item => 
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          (item.id === product.id && item.size === product.size && item.color === product.color)
+            ? { ...item, quantity: item.quantity + 1 } 
+            : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: 1, selected: true }];
     });
   };
 
-  const updateQuantity = (productId, delta) => {
+  const updateQuantity = (productId, delta, size, color) => {
     setCart(prev => prev.map(item => {
-      if (item.id === productId) {
-        const newQty = Math.max(1, item.quantity + delta);
+      if (item.id === productId && item.size === size && item.color === color) {
+        const max = item.maxStock || 99;
+        const newQty = Math.max(1, Math.min(max, item.quantity + delta));
         return { ...item, quantity: newQty };
       }
       return item;
     }));
   };
 
-  const removeFromCart = (productId) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+  const removeFromCart = (productId, size, color) => {
+    setCart(prev => prev.filter(item => 
+      !(item.id === productId && item.size === size && item.color === color)
+    ));
   };
 
   const clearCart = () => setCart([]);
+
+  const removeSelectedFromCart = () => {
+    setCart(prev => prev.filter(item => !item.selected));
+  };
+
+  const toggleSelection = (productId, size, color) => {
+    setCart(prev => prev.map(item => {
+      if (item.id === productId && item.size === size && item.color === color) {
+        return { ...item, selected: !item.selected };
+      }
+      return item;
+    }));
+  };
+
+  const toggleAllSelection = (isSelected) => {
+    setCart(prev => prev.map(item => ({ ...item, selected: isSelected })));
+  };
 
   const toggleWishlist = (product) => {
     setWishlist(prev => {
@@ -67,10 +122,12 @@ export const ShopProvider = ({ children }) => {
     return wishlist.some(item => item.id === productId);
   };
 
-  const cartTotal = cart.reduce((acc, item) => {
-    const priceNum = parseInt(item.price.replace(/[^\d]/g, ''));
-    return acc + (priceNum * item.quantity);
-  }, 0);
+  const cartTotal = cart
+    .filter(item => item.selected)
+    .reduce((acc, item) => {
+      const priceNum = parseInt(item.price.replace(/[^\d]/g, ''));
+      return acc + (priceNum * item.quantity);
+    }, 0);
 
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
   const wishlistCount = wishlist.length;
@@ -81,10 +138,15 @@ export const ShopProvider = ({ children }) => {
       wishlist,
       searchQuery,
       setSearchQuery,
+      products,
+      loading,
       addToCart,
       removeFromCart,
       updateQuantity,
+      toggleSelection,
+      toggleAllSelection,
       clearCart,
+      removeSelectedFromCart,
       toggleWishlist,
       isInWishlist,
       cartCount,

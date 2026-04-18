@@ -6,8 +6,10 @@ import AnimatedSection from '../components/AnimatedSection';
 import './Checkout.css';
 
 const Checkout = () => {
-  const { cart, cartTotal, clearCart } = useShop();
+  const { cart, cartTotal, removeSelectedFromCart } = useShop();
   const navigate = useNavigate();
+
+  const selectedItems = cart.filter(item => item.selected);
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -16,7 +18,7 @@ const Checkout = () => {
     pincode: ''
   });
 
-  if (cart.length === 0) {
+  if (selectedItems.length === 0) {
     navigate('/cart');
     return null;
   }
@@ -37,7 +39,7 @@ const Checkout = () => {
     message += `Address: ${formData.address}, ${formData.city} - ${formData.pincode}\n\n`;
     
     message += `*Order Items:*\n`;
-    cart.forEach((item, index) => {
+    selectedItems.forEach((item, index) => {
       message += `${index + 1}. ${item.name} (Size: ${item.size || 'M'}) x ${item.quantity} - ₹${item.price}\n`;
     });
     
@@ -52,7 +54,7 @@ const Checkout = () => {
       const { db } = await import('../firebase/config');
       
       await runTransaction(db, async (transaction) => {
-        for (const item of cart) {
+        for (const item of selectedItems) {
           const productRef = doc(db, "products", item.id);
           const productDoc = await transaction.get(productRef);
           
@@ -75,9 +77,9 @@ const Checkout = () => {
       // We still proceed with the WhatsApp message even if stock logic fails
     }
 
-    // Clear cart and redirect to WhatsApp
+    // Clear selected items and redirect to WhatsApp
     window.open(whatsappURL, '_blank');
-    clearCart();
+    removeSelectedFromCart();
     navigate('/');
   };
 
@@ -156,8 +158,8 @@ const Checkout = () => {
             <AnimatedSection animation="slideInRight" delay={0.2} className="checkout-summary">
               <h3>Order Summary</h3>
               <div className="checkout-items">
-                {cart.map((item) => (
-                  <div key={item.id} className="summary-item">
+                {selectedItems.map((item, idx) => (
+                  <div key={idx} className="summary-item">
                     <span>{item.name} x {item.quantity}</span>
                     <span>₹{(parseInt(item.price.replace(/[^\d]/g, '')) * item.quantity).toLocaleString()}</span>
                   </div>

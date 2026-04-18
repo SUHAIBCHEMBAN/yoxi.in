@@ -1,32 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { db } from '../firebase/config';
-import { collection, getDocs } from 'firebase/firestore';
 import AnimatedSection from '../components/AnimatedSection';
 import ProductCard from '../components/ProductCard';
 import { useShop } from '../context/ShopContext';
 import './Shop.css';
 
 const Shop = () => {
-  const { searchQuery } = useShop();
+  const { searchQuery, products, loading } = useShop();
   const [activeCategory, setActiveCategory] = useState('All');
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "products"));
-        const pData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setProducts(pData);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
 
   const categories = ['All', 'Shirts', 'Trousers', 'Imported'];
 

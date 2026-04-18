@@ -72,7 +72,10 @@ const ProductDetail = () => {
       alert('Please select a color');
       return;
     }
-    addToCart({ ...product, size: selectedSize, color: selectedColor });
+    const currentVariant = product.variants?.find(v => v.size === selectedSize && v.color === selectedColor);
+    const maxStock = currentVariant ? currentVariant.stock : 99; 
+
+    addToCart({ ...product, size: selectedSize, color: selectedColor, maxStock });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
@@ -189,7 +192,6 @@ const ProductDetail = () => {
                         key={color}
                         className={`pd-size-btn ${selectedColor === color ? 'active' : ''}`}
                         onClick={() => setSelectedColor(color)}
-                        style={{ padding: '0.8rem 1.5rem', textTransform: 'capitalize' }}
                       >
                         {color}
                       </button>
@@ -229,9 +231,8 @@ const ProductDetail = () => {
                 </div>
               )}
 
-              {/* Shipping Note */}
               <div className="pd-shipping-note">
-                <span>Free express delivery across Kerala. Dispatches within 24 hours.</span>
+                <span>Free express delivery. Dispatches within 24 hours.</span>
               </div>
 
             </AnimatedSection>
